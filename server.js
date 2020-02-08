@@ -17,8 +17,8 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Requiring our routes
-require("./routes/html-routes.js")(app);
-require("./routes/api-routes.js")(app);
+require("./routes/html-routes.js")(app, db);
+require("./routes/api-routes.js")(app, db);
 
 // Syncing our database and logging a message to the user upon success
 const PORT = process.env.PORT || 8080;

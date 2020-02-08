@@ -1,0 +1,12 @@
+{{#if pets}}
+  {{#each pets}}
+    <p>Name: {{ name }}</p>
+  {{/each}}
+{{else}}
+  <p>no pets found</p>
+{{/if}}
+
+<form id="create-pet">
+  <input type="text" name="name" required>
+  <button type="submit">Create</button>
+</form>
