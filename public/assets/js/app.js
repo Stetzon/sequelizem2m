@@ -25,3 +25,17 @@ $('#create-user').submit(function(event) {
     location.reload();
   })
 })
+
+$('#create-role').submit(function(event) {
+  event.preventDefault();
+
+  $.ajax({
+    url: '/roles',
+    method: 'POST',
+    data: {
+      name: $(this).find('input').val().trim()
+    }
+  }).then(function(result) {
+    location.reload();
+  })
+})

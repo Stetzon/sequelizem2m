@@ -1,1 +1,65 @@
-<h1>Server Works</h1>
+<h2>Users</h2>
+{{#if users}}
+  {{#each users}}
+    <p>Name: {{ name }}</p>
+  {{/each}}
+{{else}}
+  <p>no users found</p>
+{{/if}}
+
+<h3>Create User</h3>
+<form id="create-user">
+  <input type="text" name="name" required>
+  <button type="submit">Create</button>
+</form>
+
+<br><hr>
+
+<h2>Pets</h2>
+{{#if pets}}
+  {{#each pets}}
+    <p>Name: {{ name }}</p>
+  {{/each}}
+{{else}}
+  <p>no pets found</p>
+{{/if}}
+
+<h3>Create Pet</h3>
+{{#if roles}} {{#if users}}
+  <form id="create-pet">
+    <label for="name">Pet Name</label>
+    <input type="text" name="name" required>
+    <label for="user">User</label>
+    <select name="user">
+      {{#each users}}
+        <option value="{{id}}">{{ name }}</option>
+      {{/each}}
+    </select>
+    <select name="role">
+      {{#each roles}}
+        <option value="{{id}}">{{ name }}</option>
+      {{/each}}
+    </select>
+    <button type="submit">Create</button>
+  </form>
+{{else}}
+  <p>You must create a user and role before creating a pet</p>
+{{/if}} {{/if}}
+
+<br><hr>
+
+<h2>Roles</h2>
+{{#if roles}}
+  {{#each roles}}
+    <p>Name: {{ name }}</p>
+  {{/each}}
+{{else}}
+  <p>no roles found</p>
+{{/if}}
+
+<h3>Create Pet</h3>
+<form id="create-role">
+  <label for="name">Role Name</label>
+  <input type="text" name="name" required>
+  <button type="submit">Create</button>
+</form>

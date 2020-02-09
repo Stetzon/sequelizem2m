@@ -23,4 +23,16 @@ module.exports = function(app, db) {
         res.error(err.message);
       });
   });
+
+  app.post("/roles", function (req, res) {
+    db.role.create({
+      name: req.body.name,
+    })
+      .then(function(role) {
+        res.json(role);
+      })
+      .catch(function(err) {
+        res.error(err.message);
+      });
+  });
 }
