@@ -5,7 +5,9 @@ $('#create-pet').submit(function(event) {
     url: '/pets',
     method: 'POST',
     data: {
-      name: $(this).find('input').val().trim()
+      name: $(this).find('input[name=name]').val().trim(),
+      user: $(this).find('select[name=user]').val(),
+      role: $(this).find('select[name=role]').val(),
     }
   }).then(function(result) {
     location.reload();

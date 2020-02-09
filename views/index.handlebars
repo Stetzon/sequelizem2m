@@ -1,8 +1,10 @@
 <h2>Users</h2>
 {{#if users}}
+  <ul>
   {{#each users}}
-    <p>Name: {{ name }}</p>
+    <li>Name: {{ name }}</li>
   {{/each}}
+  </ul>
 {{else}}
   <p>no users found</p>
 {{/if}}
@@ -15,17 +17,39 @@
 
 <br><hr>
 
+<h2>Roles</h2>
+{{#if roles}}
+  <ul>
+  {{#each roles}}
+    <li>Name: {{ name }}</li>
+  {{/each}}
+  </ul>
+{{else}}
+  <p>no roles found</p>
+{{/if}}
+
+<h3>Create Role</h3>
+<form id="create-role">
+  <label for="name">Role Name</label>
+  <input type="text" name="name" required>
+  <button type="submit">Create</button>
+</form>
+
+<br><hr>
+
 <h2>Pets</h2>
 {{#if pets}}
+  <ul>
   {{#each pets}}
-    <p>Name: {{ name }}</p>
+    <li>Name: {{ name }}</li>
   {{/each}}
+  </ul>
 {{else}}
   <p>no pets found</p>
 {{/if}}
 
 <h3>Create Pet</h3>
-{{#if roles}} {{#if users}}
+{{#if users}} {{#if roles}}
   <form id="create-pet">
     <label for="name">Pet Name</label>
     <input type="text" name="name" required>
@@ -43,23 +67,7 @@
     <button type="submit">Create</button>
   </form>
 {{else}}
-  <p>You must create a user and role before creating a pet</p>
-{{/if}} {{/if}}
-
-<br><hr>
-
-<h2>Roles</h2>
-{{#if roles}}
-  {{#each roles}}
-    <p>Name: {{ name }}</p>
-  {{/each}}
-{{else}}
-  <p>no roles found</p>
+  <p>You must create a role before creating a pet</p>
+{{/if}} {{else}}
+  <p>You must create a user before creating a pet</p>
 {{/if}}
-
-<h3>Create Pet</h3>
-<form id="create-role">
-  <label for="name">Role Name</label>
-  <input type="text" name="name" required>
-  <button type="submit">Create</button>
-</form>

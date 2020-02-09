@@ -15,4 +15,25 @@ module.exports = function(app, db) {
           })
         })
     })
+
+    // async version:
+    /*
+    app.get('/', function(req, res) {
+      try {
+        const pets = await db.pet.findAll({raw: true})
+        const users = await db.user.findAll({raw: true})
+        const roles = await db.role.findAll({raw: true})
+
+        res.render('index', {
+          pets: pets,
+          users: users,
+          roles: roles
+        })
+
+      } catch (error) {
+        throw error;
+      }
+    })
+    */
+
 }

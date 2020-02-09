@@ -5,10 +5,15 @@ module.exports = function(app, db) {
       name: req.body.name,
     })
       .then(function(pet) {
-        res.json(pet);
+        // note that if the following fails, we will want to throw an error and remove the pet
+        pet.addUser(req.body.user, {
+          through: {roleId: req.body.role}
+        }).then(function() {
+          res.json(pet);
+        })
       })
       .catch(function(err) {
-        res.error(err.message);
+        throw err;
       });
   });
 
