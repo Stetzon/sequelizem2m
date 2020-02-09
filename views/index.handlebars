@@ -3,6 +3,15 @@
   <ul>
   {{#each users}}
     <li>Name: {{ name }}</li>
+    {{#if pets.id}}
+      <h4>Pets:</h4>
+      <ul>
+        {{#each}}
+          <li>Role: {{pets.user_pet.role}}</li>
+          <li>Name: {{pets.name}}</li>
+        {{/each}}
+      </ul>
+    {{/if}}
   {{/each}}
   </ul>
 {{else}}
@@ -17,31 +26,20 @@
 
 <br><hr>
 
-<h2>Roles</h2>
-{{#if roles}}
-  <ul>
-  {{#each roles}}
-    <li>Name: {{ name }}</li>
-  {{/each}}
-  </ul>
-{{else}}
-  <p>no roles found</p>
-{{/if}}
-
-<h3>Create Role</h3>
-<form id="create-role">
-  <label for="name">Role Name</label>
-  <input type="text" name="name" required>
-  <button type="submit">Create</button>
-</form>
-
-<br><hr>
-
 <h2>Pets</h2>
 {{#if pets}}
   <ul>
   {{#each pets}}
     <li>Name: {{ name }}</li>
+    {{#if users.id}}
+      <h4>People:</h4>
+      <ul>
+        {{#each}}
+          <li>Role: {{users.user_pet.role}}</li>
+          <li>Name: {{users.name}}</li>
+        {{/each}}
+      </ul>
+    {{/if}}
   {{/each}}
   </ul>
 {{else}}
@@ -49,7 +47,7 @@
 {{/if}}
 
 <h3>Create Pet</h3>
-{{#if users}} {{#if roles}}
+{{#if users}}
   <form id="create-pet">
     <label for="name">Pet Name</label>
     <input type="text" name="name" required>
@@ -60,14 +58,12 @@
       {{/each}}
     </select>
     <select name="role">
-      {{#each roles}}
-        <option value="{{id}}">{{ name }}</option>
-      {{/each}}
+      <option value="Owner">Owner</option>
+      <option value="Vet">Vet</option>
+      <option value="Sitter">Sitter</option>
     </select>
     <button type="submit">Create</button>
   </form>
 {{else}}
-  <p>You must create a role before creating a pet</p>
-{{/if}} {{else}}
   <p>You must create a user before creating a pet</p>
 {{/if}}

@@ -7,7 +7,7 @@ module.exports = function(app, db) {
       .then(function(pet) {
         // note that if the following fails, we will want to throw an error and remove the pet
         pet.addUser(req.body.user, {
-          through: {roleId: req.body.role}
+          through: {role: req.body.role}
         }).then(function() {
           res.json(pet);
         })

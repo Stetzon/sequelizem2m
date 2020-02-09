@@ -2,16 +2,21 @@ module.exports = function(app, db) {
 
     app.get('/', function(req, res) {
       // set {raw: true} to return plain json instead of sequelize objects
-      const pets = db.pet.findAll({raw: true})
-      const users = db.user.findAll({raw: true})
-      const roles = db.role.findAll({raw: true})
+      const pets = db.pet.findAll({
+        raw: true,
+        include: db.user
+      })
+      const users = db.user.findAll({
+        raw: true,
+        include: db.pet
+      })
 
-      Promise.all([pets, users, roles])
+      Promise.all([pets, users])
         .then(function(result) {
+          console.log(result)
           res.render('index', {
-            pets: result[0],
-            users: result[1],
-            roles: result[2]
+            pets: result[0],  // pets
+            users: result[1], // users
           })
         })
     })
@@ -22,12 +27,10 @@ module.exports = function(app, db) {
       try {
         const pets = await db.pet.findAll({raw: true})
         const users = await db.user.findAll({raw: true})
-        const roles = await db.role.findAll({raw: true})
 
         res.render('index', {
           pets: pets,
           users: users,
-          roles: roles
         })
 
       } catch (error) {
