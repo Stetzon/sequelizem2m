@@ -1,4 +1,4 @@
-module.exports = function(app, db) {
+module.exports = (app, db) => {
 
     formatSequelizeArray = (seqArr) => {
       return seqArr.map((seqObj) => {
