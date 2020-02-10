@@ -1,19 +1,15 @@
 <h2>Users</h2>
 {{#if users}}
-  <ul>
   {{#each users}}
-    <li>Name: {{ name }}</li>
-    {{#if pets.id}}
-      <h4>Pets:</h4>
+    <h4>{{ name }}</h4>
+    {{#if pets}}
       <ul>
-        {{#each}}
-          <li>Role: {{pets.user_pet.role}}</li>
-          <li>Name: {{pets.name}}</li>
+        {{#each pets}}
+          <li><b>{{user_pet.role}}</b>: {{ name }}</li>
         {{/each}}
       </ul>
     {{/if}}
   {{/each}}
-  </ul>
 {{else}}
   <p>no users found</p>
 {{/if}}
@@ -28,20 +24,16 @@
 
 <h2>Pets</h2>
 {{#if pets}}
-  <ul>
   {{#each pets}}
-    <li>Name: {{ name }}</li>
-    {{#if users.id}}
-      <h4>People:</h4>
+    <h4>{{ name }}</h4>
+    {{#if users}}
       <ul>
-        {{#each}}
-          <li>Role: {{users.user_pet.role}}</li>
-          <li>Name: {{users.name}}</li>
+        {{#each users}}
+          <li><b>{{user_pet.role}}</b>: {{ name }}</li>
         {{/each}}
       </ul>
     {{/if}}
   {{/each}}
-  </ul>
 {{else}}
   <p>no pets found</p>
 {{/if}}
