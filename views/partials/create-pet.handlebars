@@ -1,0 +1,29 @@
+<h3>Create Pet</h3>
+{{#if users}}
+  <form id="create-pet">
+    <div class="form-row">
+      <div class="col-4">
+        <input type="text" class="form-control" name="name" placeholder="Pet Name" required>
+      </div>
+      <div class="col">
+        <select class="form-control" name="user">
+        {{#each users}}
+          <option value="{{id}}">{{ name }}</option>
+        {{/each}}
+        </select>
+      </div>
+      <div class="col">
+        <select class="form-control" name="role">
+          <option value="Owner">Owner</option>
+          <option value="Vet">Vet</option>
+          <option value="Sitter">Sitter</option>
+        </select>
+      </div>
+      <div class="col">
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </div>
+  </form>
+{{else}}
+  <p>You must create a user before creating a pet</p>
+{{/if}}

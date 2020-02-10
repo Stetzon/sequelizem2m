@@ -1,0 +1,25 @@
+<h2>Pets</h2>
+{{#if pets}}
+  <ul class="list-group">
+    {{#each pets}}
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-4">
+            <h5>{{ name }}</h5>
+          </div>
+          {{#if users}}
+            <div class="col">
+              <ul>
+                {{#each users}}
+                  <li>{{ name }} <span class="badge badge-info">{{user_pet.role}}</span></li>
+                {{/each}}
+              </ul>
+            </div>
+          {{/if}}
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>no pets found</p>
+{{/if}}

@@ -4,148 +4,24 @@
   </div>
   <div class="row">
     <div class="col-md">
-      {{!-- Create User form --}}
-      <h3>Create User</h3>
-      <form id="create-user">
-        <div class="form-row">
-          <div class="col">
-            <input type="text" class="form-control" name="name" placeholder="User name" required>
-          </div>
-          <div class="col">
-            <button type="submit" class="btn btn-primary pull-right">Create</button>
-          </div>
-        </div>
-      </form>
+      {{> create-user }}      
     </div>
     <div class="col-md-8">
-      {{!-- Create Pet Form  --}}
-    <h3>Create Pet</h3>
-    {{#if users}}
-      <form id="create-pet">
-        <div class="form-row">
-          <div class="col-4">
-            <input type="text" class="form-control" name="name" placeholder="Pet Name" required>
-          </div>
-          <div class="col">
-            <select class="form-control" name="user">
-            {{#each users}}
-              <option value="{{id}}">{{ name }}</option>
-            {{/each}}
-            </select>
-          </div>
-          <div class="col">
-            <select class="form-control" name="role">
-              <option value="Owner">Owner</option>
-              <option value="Vet">Vet</option>
-              <option value="Sitter">Sitter</option>
-            </select>
-          </div>
-          <div class="col">
-            <button type="submit" class="btn btn-primary">Create</button>
-          </div>
-        </div>
-      </form>
-    {{else}}
-      <p>You must create a user before creating a pet</p>
-    {{/if}}
+      {{> create-pet }}
     </div>
   </div>
   <hr>
   <div class="row">
     <div class="col">
-      {{#if users}}{{#if pets}}
-      <h2>Update Existing</h2>
-      <form id="update-user-pet">
-        <div class="form-row align-items-center">
-          <div class="col">
-            <select class="form-control" name="user" required>
-              <option value="">Select User</option>
-              {{#each users}}
-                <option value="{{id}}">{{ name }}</option>
-              {{/each}}
-            </select>
-          </div>
-          <div class="col">
-            <select class="form-control" name="pet" required>
-              <option value="">Select Pet</option>
-              {{#each pets}}
-                <option value="{{id}}">{{ name }}</option>
-              {{/each}}
-            </select>
-          </div>
-          <div class="col">
-            <select class="form-control" name="role" required>
-              <option value="">Select Role</option>
-              <option value="Owner">Owner</option>
-              <option value="Vet">Vet</option>
-              <option value="Sitter">Sitter</option>
-            </select>
-          </div>
-          <div class="col">
-            <button type="submit" class="btn btn-primary">Update</button>
-          </div>
-        </div>
-      </form>
-      <hr>
-      {{/if}}{{/if}}
+      {{> update-user-pets }}
     </div>
   </div>
   <div class="row">
     <div class="col-md">
-      {{!-- User list --}}
-      <h2>Users</h2>
-      {{#if users}}
-        <ul class="list-group">
-        {{#each users}}
-          <li class="list-group-item">
-            <div class="row">
-              <div class="col-4">
-                <h5>{{ name }}</h5>
-              </div>
-              {{#if pets}}
-                <div class="col">
-                  <ul>
-                    {{#each pets}}
-                      <li>{{ name }} <span class="badge badge-info">{{user_pet.role}}</span></li>
-                    {{/each}}
-                  </ul>
-                </div>
-              {{/if}}
-            </div>
-          </li>
-        {{/each}}
-        </ul>
-      {{else}}
-        <p>no users found</p>
-      {{/if}}
+      {{> users-list }}
     </div>
     <div class="col-md">
-      {{!-- Pet list --}}
-      <h2>Pets</h2>
-      {{#if pets}}
-      <ul class="list-group">
-        {{#each pets}}
-          <li class="list-group-item">
-            <div class="row">
-              <div class="col-4">
-                <h5>{{ name }}</h5>
-              </div>
-              {{#if users}}
-                <div class="col">
-                  <ul>
-                    {{#each users}}
-                      <li>{{ name }} <span class="badge badge-info">{{user_pet.role}}</span></li>
-                    {{/each}}
-                  </ul>
-                </div>
-              {{/if}}
-            </div>
-          </li>
-        {{/each}}
-      </ul>
-      {{else}}
-        <p>no pets found</p>
-      {{/if}}
+      {{> pets-list }}
     </div>
   </div>
 </div>

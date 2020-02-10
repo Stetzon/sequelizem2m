@@ -1,0 +1,35 @@
+{{#if users}}{{#if pets}}
+  <h2>Update Existing</h2>
+  <form id="update-user-pet">
+    <div class="form-row align-items-center">
+      <div class="col">
+        <select class="form-control" name="user" required>
+          <option value="">Select User</option>
+          {{#each users}}
+            <option value="{{id}}">{{ name }}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="col">
+        <select class="form-control" name="role" required>
+          <option value="">Select Role</option>
+          <option value="Owner">Owner</option>
+          <option value="Vet">Vet</option>
+          <option value="Sitter">Sitter</option>
+        </select>
+      </div>
+      <div class="col">
+        <select class="form-control" name="pet" required>
+          <option value="">Select Pet</option>
+          {{#each pets}}
+            <option value="{{id}}">{{ name }}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="col">
+        <button type="submit" class="btn btn-primary">Update</button>
+      </div>
+    </div>
+  </form>
+  <hr>
+{{/if}}{{/if}}
