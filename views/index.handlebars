@@ -59,3 +59,29 @@
 {{else}}
   <p>You must create a user before creating a pet</p>
 {{/if}}
+
+<br><hr>
+
+{{#if users}}{{#if pets}}
+<h2>Update Existing</h2>
+<form id="update-user-pet">
+  <label for="name">Pet</label>
+  <select name="pet">
+    {{#each pets}}
+      <option value="{{id}}">{{ name }}</option>
+    {{/each}}
+  </select>
+  <label for="user">User</label>
+  <select name="user">
+    {{#each users}}
+      <option value="{{id}}">{{ name }}</option>
+    {{/each}}
+  </select>
+  <select name="role">
+    <option value="Owner">Owner</option>
+    <option value="Vet">Vet</option>
+    <option value="Sitter">Sitter</option>
+  </select>
+  <button type="submit">Update</button>
+</form>
+{{/if}}{{/if}}

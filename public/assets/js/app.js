@@ -28,14 +28,16 @@ $('#create-user').submit(function(event) {
   })
 })
 
-$('#create-role').submit(function(event) {
+$('#update-user-pet').submit(function(event) {
   event.preventDefault();
 
   $.ajax({
-    url: '/roles',
-    method: 'POST',
+    url: '/pets',
+    method: 'PATCH',
     data: {
-      name: $(this).find('input').val().trim()
+      pet: $(this).find('select[name=pet]').val(),
+      user: $(this).find('select[name=user]').val(),
+      role: $(this).find('select[name=role]').val(),
     }
   }).then(function(result) {
     location.reload();

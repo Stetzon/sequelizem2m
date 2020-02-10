@@ -17,6 +17,24 @@ module.exports = function(app, db) {
       });
   });
 
+  app.patch("/pets", function (req, res) {
+    db.pet.findOne({
+      where: {
+        id: req.body.pet
+      },
+    })
+      .then(function(pet) {
+        pet.addUser(parseInt(req.body.user), {
+          through: {role: req.body.role},
+        }).then(function() {
+          res.json(pet);
+        })
+      })
+      .catch(function(err) {
+        throw err;
+      });
+  });
+
   app.post("/users", function (req, res) {
     db.user.create({
       name: req.body.name,
